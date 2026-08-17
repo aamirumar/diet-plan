@@ -14,7 +14,7 @@ table{width:100%;border-collapse:collapse;margin:12px 0 20px} th,td{border:1px s
 .day{font-weight:bold;font-size:1.05em;margin-top:16px}
 ul{margin-top:6px}.note{background:#f2f6fa;padding:12px;border-left:4px solid #78909c;border-radius:4px}
 .small{font-size:.92em;color:#555}
-@media print{body{background:#fff;padding:0}.container{box-shadow:none;padding:10px}h2{page-break-after:avoid}table{page-break-inside:avoid}.tabs,.tracker-form,.tracker-actions{display:none!important}}
+@media print{body{background:#fff;padding:0}.container{box-shadow:none;padding:10px}h2{page-break-after:avoid}table{page-break-inside:avoid}.tabs,.day-tabs,.tracker-form,.tracker-actions{display:none!important}#tracker{display:none!important}.day-panel{display:block!important}}
 
 /* Tabs */
 .tabs{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
@@ -22,6 +22,15 @@ ul{margin-top:6px}.note{background:#f2f6fa;padding:12px;border-left:4px solid #7
 .tab-btn.active{background:#3f6f9f;color:#fff;border-color:#3f6f9f}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
+
+/* Day tabs (inside Plan) */
+.day-tabs{display:flex;gap:6px;justify-content:center;margin:6px 0 20px;flex-wrap:wrap}
+.day-tab-btn{border:1px solid #cdd6dd;background:#f7fafc;color:#345;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:.85em;font-weight:bold}
+.day-tab-btn.active{background:#5c8fbf;color:#fff;border-color:#5c8fbf}
+.day-panel{display:none}
+.day-panel.active{display:block}
+.day-panel h3{margin-top:22px;color:#3f6f9f;border-bottom:1px solid #e3e8ec;padding-bottom:4px}
+.rest-note{background:#f2f6fa;padding:12px;border-left:4px solid #9db4c4;border-radius:4px;color:#456}
 
 /* Tracker */
 .tracker-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;background:#f2f6fa;padding:16px;border-radius:8px}
@@ -54,6 +63,18 @@ button.danger{background:#fdeceb;color:#a33;border:1px solid #e3b8b3;padding:6px
 <div id="plan" class="tab-panel active">
 <p><strong>Goal:</strong> gradual fat loss toward 98 kg, with a longer-term goal around 95 kg. Focus on consistency, strength, recovery and sustainable eating.</p>
 
+<div class="day-tabs">
+  <button class="day-tab-btn active" data-day="day-overview">Overview</button>
+  <button class="day-tab-btn" data-day="day-mon">Monday</button>
+  <button class="day-tab-btn" data-day="day-tue">Tuesday</button>
+  <button class="day-tab-btn" data-day="day-wed">Wednesday</button>
+  <button class="day-tab-btn" data-day="day-thu">Thursday</button>
+  <button class="day-tab-btn" data-day="day-fri">Friday</button>
+  <button class="day-tab-btn" data-day="day-sat">Saturday</button>
+  <button class="day-tab-btn" data-day="day-sun">Sunday</button>
+</div>
+
+<div id="day-overview" class="day-panel active">
 <h2>Daily Schedule</h2>
 <table><tr><th>Time</th><th>Activity</th><th>Target</th></tr>
 <tr><td>7:30–8:00 AM</td><td>Wake + water</td><td>Normal hydration</td></tr>
@@ -77,65 +98,6 @@ button.danger{background:#fdeceb;color:#a33;border:1px solid #e3b8b3;padding:6px
 <tr><td>Friday</td><td>Full Body</td><td>6–7 exercises; mostly 2–3 × 10–12</td><td>Cardio 20–30 min</td><td>10–15 min</td></tr>
 <tr><td>Saturday</td><td>Recovery</td><td>No heavy weights</td><td>Walk/cycle 45–60 min</td><td>Optional</td></tr>
 <tr><td>Sunday</td><td>Recovery</td><td>No heavy weights</td><td>Easy walk 30–45 min</td><td>Stretch/mobility</td></tr></table>
-
-<h2>Strength Exercises</h2>
-<h3>Monday — Chest + Triceps</h3>
-<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-<tr><td>Machine chest press</td><td>3</td><td>10–12</td></tr><tr><td>Incline dumbbell press</td><td>3</td><td>10</td></tr><tr><td>Pec deck</td><td>3</td><td>12</td></tr><tr><td>Cable crossover</td><td>2</td><td>12</td></tr><tr><td>Triceps pushdown</td><td>3</td><td>12</td></tr><tr><td>Overhead cable triceps extension</td><td>2</td><td>12</td></tr></table>
-<p><strong>Cardio:</strong> Cardio 15–25 min; comfortable brisk pace, around 4.5–5.2 km/h and 3–5% incline if comfortable.</p>
-
-<h3>Tuesday — Back + Biceps</h3>
-<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-<tr><td>Lat pulldown</td><td>3</td><td>10–12</td></tr><tr><td>Seated cable row</td><td>3</td><td>10–12</td></tr><tr><td>Chest-supported row</td><td>3</td><td>10</td></tr><tr><td>Straight-arm pulldown</td><td>2</td><td>12</td></tr><tr><td>Dumbbell biceps curl</td><td>3</td><td>12</td></tr><tr><td>Hammer curl</td><td>2</td><td>12</td></tr></table>
-<p><strong>Cardio:</strong> Cardio 20–30 min at moderate intensity. Choose elliptical or treadmill walking.</p>
-
-<h3>Wednesday — Legs + Core</h3>
-<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-<tr><td>Leg press</td><td>3</td><td>10–12</td></tr><tr><td>Leg curl</td><td>3</td><td>12</td></tr><tr><td>Leg extension</td><td>3</td><td>12</td></tr><tr><td>Hip thrust / glute bridge machine</td><td>3</td><td>12</td></tr><tr><td>Calf raise</td><td>3</td><td>15</td></tr><tr><td>Plank</td><td>3</td><td>30–40 sec</td></tr><tr><td>Cable crunch</td><td>3</td><td>12</td></tr></table>
-<p><strong>Cardio:</strong> Cycling 15–25 min easy/moderate. Keep cardio easier after leg training.</p>
-
-<h3>Thursday — Shoulders + Arms</h3>
-<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-<tr><td>Machine shoulder press</td><td>3</td><td>10–12</td></tr><tr><td>Dumbbell lateral raise</td><td>3</td><td>12–15</td></tr><tr><td>Rear-delt machine</td><td>3</td><td>12</td></tr><tr><td>Cable face pull</td><td>2</td><td>15</td></tr><tr><td>Triceps pushdown</td><td>3</td><td>12</td></tr><tr><td>Dumbbell biceps curl</td><td>3</td><td>12</td></tr></table>
-<p><strong>Cardio:</strong> Cardio 20–30 min at moderate intensity.</p>
-
-<h3>Friday — Full Body</h3>
-<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-<tr><td>Leg press</td><td>3</td><td>10</td></tr><tr><td>Chest press</td><td>3</td><td>10</td></tr><tr><td>Lat pulldown</td><td>3</td><td>10</td></tr><tr><td>Seated row</td><td>3</td><td>10</td></tr><tr><td>Leg curl</td><td>2</td><td>12</td></tr><tr><td>Shoulder press</td><td>2</td><td>10</td></tr><tr><td>Plank</td><td>3</td><td>30–45 sec</td></tr></table>
-<p><strong>Cardio:</strong> 25–30 min.</p>
-
-<h2>Bodyweight Routine — 2–3 Times/Week</h2>
-<p>Do this after a normal workout or as a short separate session. Keep it easy for the first 2 weeks.</p>
-<table class="bodyweight"><tr><th>Exercise</th><th>Sets</th><th>Reps / Time</th></tr>
-<tr><td>Chair/bench squats</td><td>2</td><td>8–12</td></tr>
-<tr><td>Wall push-ups</td><td>2</td><td>10–15</td></tr>
-<tr><td>Glute bridges</td><td>2</td><td>12–15</td></tr>
-<tr><td>Standing calf raises</td><td>2</td><td>15</td></tr>
-<tr><td>Bird-dog</td><td>2</td><td>8 each side</td></tr>
-<tr><td>Wall plank</td><td>2</td><td>20–30 sec</td></tr></table>
-<p>Rest 45–60 seconds between exercises. Avoid burpees, jump squats and high-impact jumping for now.</p>
-
-<h2>7-Day Natural Food Plan</h2>
-<div class="day">Monday — Fish</div>
-<ul><li>Pre-workout at 8:00–8:30 PM: 1 banana + 5–6 almonds; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs (2 whole + 1 white) + 2 small rotis + vegetables + 200 g curd.</li><li>Lunch: 150–180 g fish + 1 cup cooked rice + large salad + vegetables.</li><li>Snack: apple/guava/orange + 10 almonds or 2 walnuts.</li><li>Dinner: 1 bowl dal + 100 g paneer + vegetables + 1 roti.</li></ul>
-
-<div class="day">Tuesday — Dal + Egg</div>
-<ul><li>Pre-workout at 8:00–8:30 PM: banana + 5 almonds.</li><li>Post-workout: 3 eggs + medium bowl vegetable poha + 200 g curd.</li><li>Lunch: 1 large bowl dal + 2 rotis + vegetables + salad + curd.</li><li>Snack: ~200 g papaya + 2 walnuts.</li><li>Dinner: 150–180 g fish + vegetables + 1 roti.</li></ul>
-
-<div class="day">Wednesday — Mutton</div>
-<ul><li>Pre-workout at 8:00–8:30 PM: banana; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs + 2 small rotis + vegetables + curd.</li><li>Lunch: 120–150 g cooked lean mutton + 2 small rotis OR 1 cup cooked rice + vegetables + salad.</li><li>Snack: apple/orange + 10 almonds.</li><li>Dinner: 1 bowl moong/dal + 100 g paneer + vegetables.</li></ul>
-
-<div class="day">Thursday — Fish + Legumes</div>
-<ul><li>Pre-workout at 8:00–8:30 PM: banana + 5 almonds.</li><li>Post-workout: 3 eggs + 50 g oats cooked with milk + 1 fruit.</li><li>Lunch: 180 g fish + 2 rotis + vegetables + salad + curd.</li><li>Snack: buttermilk + guava/apple.</li><li>Dinner: 1 bowl dal + 2 eggs + vegetables + 1 roti.</li></ul>
-
-<div class="day">Friday — Eggs + Paneer</div>
-<ul><li>Pre-workout at 8:00–8:30 PM: banana; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs + 2 rotis + vegetables + curd.</li><li>Lunch: 1 bowl dal + 120 g paneer + 1 cup cooked rice + vegetables/salad.</li><li>Snack: papaya/watermelon + 2 walnuts + 5 almonds.</li><li>Dinner: 150–180 g fish + vegetables + 1 roti.</li></ul>
-
-<div class="day">Saturday — Fish</div>
-<ul><li>Pre-workout: banana + 5–6 almonds.</li><li>Post-workout: 3 eggs + medium bowl vegetable poha/upma + curd.</li><li>Lunch: 180–200 g fish + 1 cup cooked rice + vegetables + salad.</li><li>Snack: fruit + buttermilk.</li><li>Dinner: 1 bowl dal + 100 g paneer + vegetables + 1 roti.</li></ul>
-
-<div class="day">Sunday — Flexible Natural Day</div>
-<ul><li>Breakfast: 3 eggs + 1–2 rotis + vegetables + curd.</li><li>Lunch: 120–150 g mutton OR 180–200 g fish + 1 cup rice OR 2 rotis + lots of vegetables + salad.</li><li>Snack: fruit + 5–6 almonds + 2 walnuts.</li><li>Dinner: dal + vegetables + 1–2 eggs OR 100 g paneer + 1 roti.</li></ul>
 
 <h2>Nutrition Targets</h2>
 <ul>
@@ -185,6 +147,86 @@ button.danger{background:#fdeceb;color:#a33;border:1px solid #e3b8b3;padding:6px
 </ul>
 
 <p class="note"><strong>Key principle:</strong> Consistency for 6–8 weeks matters more than making every workout extreme.</p>
+</div>
+
+<div id="day-mon" class="day-panel">
+<h3>Workout — Chest + Triceps</h3>
+<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+<tr><td>Machine chest press</td><td>3</td><td>10–12</td></tr><tr><td>Incline dumbbell press</td><td>3</td><td>10</td></tr><tr><td>Pec deck</td><td>3</td><td>12</td></tr><tr><td>Cable crossover</td><td>2</td><td>12</td></tr><tr><td>Triceps pushdown</td><td>3</td><td>12</td></tr><tr><td>Overhead cable triceps extension</td><td>2</td><td>12</td></tr></table>
+<p><strong>Cardio:</strong> 15–25 min; comfortable brisk pace, around 4.5–5.2 km/h and 3–5% incline if comfortable.</p>
+<h3>Bodyweight — 10–15 min</h3>
+<table class="bodyweight"><tr><th>Exercise</th><th>Sets</th><th>Reps / Time</th></tr>
+<tr><td>Chair/bench squats</td><td>2</td><td>8–12</td></tr><tr><td>Wall push-ups</td><td>2</td><td>10–15</td></tr><tr><td>Glute bridges</td><td>2</td><td>12–15</td></tr><tr><td>Standing calf raises</td><td>2</td><td>15</td></tr><tr><td>Bird-dog</td><td>2</td><td>8 each side</td></tr><tr><td>Wall plank</td><td>2</td><td>20–30 sec</td></tr></table>
+<p class="small">Rest 45–60 seconds between exercises. Avoid burpees, jump squats and high-impact jumping for now.</p>
+<h3>Diet — Fish</h3>
+<ul><li>Pre-workout at 8:00–8:30 PM: 1 banana + 5–6 almonds; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs (2 whole + 1 white) + 2 small rotis + vegetables + 200 g curd.</li><li>Lunch: 150–180 g fish + 1 cup cooked rice + large salad + vegetables.</li><li>Snack: apple/guava/orange + 10 almonds or 2 walnuts.</li><li>Dinner: 1 bowl dal + 100 g paneer + vegetables + 1 roti.</li></ul>
+</div>
+
+<div id="day-tue" class="day-panel">
+<h3>Workout — Back + Biceps</h3>
+<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+<tr><td>Lat pulldown</td><td>3</td><td>10–12</td></tr><tr><td>Seated cable row</td><td>3</td><td>10–12</td></tr><tr><td>Chest-supported row</td><td>3</td><td>10</td></tr><tr><td>Straight-arm pulldown</td><td>2</td><td>12</td></tr><tr><td>Dumbbell biceps curl</td><td>3</td><td>12</td></tr><tr><td>Hammer curl</td><td>2</td><td>12</td></tr></table>
+<p><strong>Cardio:</strong> 20–30 min at moderate intensity. Choose elliptical or treadmill walking.</p>
+<h3>Bodyweight</h3>
+<p class="rest-note">Not scheduled today — bodyweight work sits on Monday, Wednesday and Friday.</p>
+<h3>Diet — Dal + Egg</h3>
+<ul><li>Pre-workout at 8:00–8:30 PM: banana + 5 almonds.</li><li>Post-workout: 3 eggs + medium bowl vegetable poha + 200 g curd.</li><li>Lunch: 1 large bowl dal + 2 rotis + vegetables + salad + curd.</li><li>Snack: ~200 g papaya + 2 walnuts.</li><li>Dinner: 150–180 g fish + vegetables + 1 roti.</li></ul>
+</div>
+
+<div id="day-wed" class="day-panel">
+<h3>Workout — Legs + Core</h3>
+<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+<tr><td>Leg press</td><td>3</td><td>10–12</td></tr><tr><td>Leg curl</td><td>3</td><td>12</td></tr><tr><td>Leg extension</td><td>3</td><td>12</td></tr><tr><td>Hip thrust / glute bridge machine</td><td>3</td><td>12</td></tr><tr><td>Calf raise</td><td>3</td><td>15</td></tr><tr><td>Plank</td><td>3</td><td>30–40 sec</td></tr><tr><td>Cable crunch</td><td>3</td><td>12</td></tr></table>
+<p><strong>Cardio:</strong> Cycling 15–25 min easy/moderate. Keep cardio easier after leg training.</p>
+<h3>Bodyweight — 10 min easy</h3>
+<table class="bodyweight"><tr><th>Exercise</th><th>Sets</th><th>Reps / Time</th></tr>
+<tr><td>Chair/bench squats</td><td>2</td><td>8–12</td></tr><tr><td>Wall push-ups</td><td>2</td><td>10–15</td></tr><tr><td>Glute bridges</td><td>2</td><td>12–15</td></tr><tr><td>Standing calf raises</td><td>2</td><td>15</td></tr><tr><td>Bird-dog</td><td>2</td><td>8 each side</td></tr><tr><td>Wall plank</td><td>2</td><td>20–30 sec</td></tr></table>
+<p class="small">Rest 45–60 seconds between exercises. Avoid burpees, jump squats and high-impact jumping for now.</p>
+<h3>Diet — Mutton</h3>
+<ul><li>Pre-workout at 8:00–8:30 PM: banana; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs + 2 small rotis + vegetables + curd.</li><li>Lunch: 120–150 g cooked lean mutton + 2 small rotis OR 1 cup cooked rice + vegetables + salad.</li><li>Snack: apple/orange + 10 almonds.</li><li>Dinner: 1 bowl moong/dal + 100 g paneer + vegetables.</li></ul>
+</div>
+
+<div id="day-thu" class="day-panel">
+<h3>Workout — Shoulders + Arms</h3>
+<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+<tr><td>Machine shoulder press</td><td>3</td><td>10–12</td></tr><tr><td>Dumbbell lateral raise</td><td>3</td><td>12–15</td></tr><tr><td>Rear-delt machine</td><td>3</td><td>12</td></tr><tr><td>Cable face pull</td><td>2</td><td>15</td></tr><tr><td>Triceps pushdown</td><td>3</td><td>12</td></tr><tr><td>Dumbbell biceps curl</td><td>3</td><td>12</td></tr></table>
+<p><strong>Cardio:</strong> 20–30 min at moderate intensity.</p>
+<h3>Bodyweight</h3>
+<p class="rest-note">Not scheduled today — bodyweight work sits on Monday, Wednesday and Friday.</p>
+<h3>Diet — Fish + Legumes</h3>
+<ul><li>Pre-workout at 8:00–8:30 PM: banana + 5 almonds.</li><li>Post-workout: 3 eggs + 50 g oats cooked with milk + 1 fruit.</li><li>Lunch: 180 g fish + 2 rotis + vegetables + salad + curd.</li><li>Snack: buttermilk + guava/apple.</li><li>Dinner: 1 bowl dal + 2 eggs + vegetables + 1 roti.</li></ul>
+</div>
+
+<div id="day-fri" class="day-panel">
+<h3>Workout — Full Body</h3>
+<table class="exercise"><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+<tr><td>Leg press</td><td>3</td><td>10</td></tr><tr><td>Chest press</td><td>3</td><td>10</td></tr><tr><td>Lat pulldown</td><td>3</td><td>10</td></tr><tr><td>Seated row</td><td>3</td><td>10</td></tr><tr><td>Leg curl</td><td>2</td><td>12</td></tr><tr><td>Shoulder press</td><td>2</td><td>10</td></tr><tr><td>Plank</td><td>3</td><td>30–45 sec</td></tr></table>
+<p><strong>Cardio:</strong> 25–30 min.</p>
+<h3>Bodyweight — 10–15 min</h3>
+<table class="bodyweight"><tr><th>Exercise</th><th>Sets</th><th>Reps / Time</th></tr>
+<tr><td>Chair/bench squats</td><td>2</td><td>8–12</td></tr><tr><td>Wall push-ups</td><td>2</td><td>10–15</td></tr><tr><td>Glute bridges</td><td>2</td><td>12–15</td></tr><tr><td>Standing calf raises</td><td>2</td><td>15</td></tr><tr><td>Bird-dog</td><td>2</td><td>8 each side</td></tr><tr><td>Wall plank</td><td>2</td><td>20–30 sec</td></tr></table>
+<p class="small">Rest 45–60 seconds between exercises. Avoid burpees, jump squats and high-impact jumping for now.</p>
+<h3>Diet — Eggs + Paneer</h3>
+<ul><li>Pre-workout at 8:00–8:30 PM: banana; optional unsweetened tea/coffee.</li><li>Post-workout: 3 eggs + 2 rotis + vegetables + curd.</li><li>Lunch: 1 bowl dal + 120 g paneer + 1 cup cooked rice + vegetables/salad.</li><li>Snack: papaya/watermelon + 2 walnuts + 5 almonds.</li><li>Dinner: 150–180 g fish + vegetables + 1 roti.</li></ul>
+</div>
+
+<div id="day-sat" class="day-panel">
+<h3>Workout — Recovery</h3>
+<p class="rest-note">No heavy weights. Walk/cycle 45–60 min at an easy pace.</p>
+<h3>Bodyweight — Optional</h3>
+<p class="rest-note">Optional — the bodyweight routine at an easy pace if you feel like it, otherwise skip.</p>
+<h3>Diet — Fish</h3>
+<ul><li>Pre-workout: banana + 5–6 almonds.</li><li>Post-workout: 3 eggs + medium bowl vegetable poha/upma + curd.</li><li>Lunch: 180–200 g fish + 1 cup cooked rice + vegetables + salad.</li><li>Snack: fruit + buttermilk.</li><li>Dinner: 1 bowl dal + 100 g paneer + vegetables + 1 roti.</li></ul>
+</div>
+
+<div id="day-sun" class="day-panel">
+<h3>Workout — Recovery</h3>
+<p class="rest-note">No heavy weights. Easy walk 30–45 min.</p>
+<h3>Bodyweight — Stretch / Mobility</h3>
+<p class="rest-note">Gentle stretching and mobility work — no bodyweight circuit needed today.</p>
+<h3>Diet — Flexible Natural Day</h3>
+<ul><li>Breakfast: 3 eggs + 1–2 rotis + vegetables + curd.</li><li>Lunch: 120–150 g mutton OR 180–200 g fish + 1 cup rice OR 2 rotis + lots of vegetables + salad.</li><li>Snack: fruit + 5–6 almonds + 2 walnuts.</li><li>Dinner: dal + vegetables + 1–2 eggs OR 100 g paneer + 1 roti.</li></ul>
+</div>
 </div>
 
 <div id="tracker" class="tab-panel">
@@ -243,6 +285,17 @@ button.danger{background:#fdeceb;color:#a33;border:1px solid #e3b8b3;padding:6px
       panels.forEach(function(p){ p.classList.remove('active'); });
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  var dayTabBtns = document.querySelectorAll('.day-tab-btn');
+  var dayPanels = document.querySelectorAll('.day-panel');
+  dayTabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      dayTabBtns.forEach(function(b){ b.classList.remove('active'); });
+      dayPanels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.day).classList.add('active');
     });
   });
 
